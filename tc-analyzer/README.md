@@ -1,3 +1,5 @@
+--- OUTDATED README BUT NEEDED FOR THE MANIFEST FILE STRUCUTE ---
+
 # ⚖️ T&C Analyzer — Chrome Extension
 
 A Chrome extension that automatically detects Terms & Conditions pages and modals, extracts the text, and uses an LLM to flag potentially harmful clauses — color-coded, plain-language, no copy-pasting required.
