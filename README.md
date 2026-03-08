@@ -60,7 +60,7 @@ This extension uses an LLM via API to analyze T&C text. It is configured for **D
 **Option A — OpenRouter (recommended, what this project uses)**
 1. Sign up at [openrouter.ai](https://openrouter.ai)
 2. Go to **Keys** and create a new API key
-3. DeepSeek V3 is available on a free tier for low-volume use
+3. We utilized Deepseek V3 for the models logic capablities and low cost. You can use whatever model you would like
 
 **Option B — OpenAI directly**
 1. Sign up at [platform.openai.com](https://platform.openai.com)
