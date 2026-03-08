@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>T&C Analyzer</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div id="app">
+
+    <header>
+      <span class="logo">⚖️</span>
+      <span class="title">T&amp;C Analyzer</span>
+    </header>
+
+    <!-- State: No T&C detected -->
+    <div id="state-none" class="state hidden">
+      <div class="state-icon">🔍</div>
+      <p class="state-msg">No Terms &amp; Conditions detected on this page.</p>
+    </div>
+
+    <!-- State: T&C detected, ready to analyze -->
+    <div id="state-ready" class="state hidden">
+      <div class="pill pill-amber">Terms &amp; Conditions Detected</div>
+      <p class="state-msg">We found a T&amp;C document on this page. Analyze it to check for harmful clauses.</p>
+      <button id="btn-analyze" class="btn-primary">Analyze Now</button>
+    </div>
+
+    <!-- State: Analyzing -->
+    <div id="state-loading" class="state hidden">
+      <div class="spinner"></div>
+      <p class="state-msg">Analyzing terms…<br/><span class="sub">This usually takes 5–15 seconds.</span></p>
+    </div>
+
+    <!-- State: Done (quick summary) -->
+    <div id="state-done" class="state hidden">
+      <div id="severity-banner" class="severity-banner">
+        <span id="severity-icon"></span>
+        <span id="severity-label"></span>
+      </div>
+      <p id="done-summary" class="done-summary"></p>
+
+      <!-- Clause count chips -->
+      <div id="clause-chips" class="clause-chips">
+        <div class="chip chip-red">
+          <span id="chip-count-red">0</span>
+          <span class="chip-label">Alarming</span>
+        </div>
+        <div class="chip chip-yellow">
+          <span id="chip-count-yellow">0</span>
+          <span class="chip-label">Caution</span>
+        </div>
+        <div class="chip chip-green">
+          <span id="chip-count-green">0</span>
+          <span class="chip-label">Standard</span>
+        </div>
+      </div>
+
+      <div id="truncation-warning" class="warning hidden">
+        ⚠️ This T&amp;C was too long to fully analyze. Results may be incomplete.
+      </div>
+
+      <div class="action-row">
+        <button id="btn-details" class="btn-secondary">View Full Analysis →</button>
+        <button id="btn-reanalyze" class="btn-ghost">Re-analyze</button>
+      </div>
+    </div>
+
+    <!-- State: Error -->
+    <div id="state-error" class="state hidden">
+      <div class="state-icon">⚠️</div>
+      <p id="error-msg" class="state-msg error-text"></p>
+      <button id="btn-retry" class="btn-ghost">Try Again</button>
+    </div>
+
+  </div>
+
+  <script src="../config.js"></script>
+  <script src="../lib/analyzer.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

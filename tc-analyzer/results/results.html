@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>T&C Analysis Results</title>
+  <link rel="stylesheet" href="results.css" />
+</head>
+<body>
+  <div id="app">
+
+    <header>
+      <div class="header-left">
+        <span class="logo">⚖️</span>
+        <div>
+          <div class="title">T&amp;C Analyzer</div>
+          <div id="source-url" class="source-url"></div>
+        </div>
+      </div>
+      <div id="header-badge" class="header-badge"></div>
+    </header>
+
+    <!-- Loading state -->
+    <div id="state-loading" class="full-center">
+      <div class="spinner"></div>
+      <p>Loading results…</p>
+    </div>
+
+    <!-- Error state -->
+    <div id="state-error" class="full-center hidden">
+      <div class="state-icon">⚠️</div>
+      <p id="error-msg" class="error-text">Could not load analysis results.</p>
+      <p class="muted">Close this tab and try analyzing again from the extension popup.</p>
+    </div>
+
+    <!-- Results -->
+    <div id="state-results" class="hidden">
+
+      <!-- Summary Card -->
+      <section class="summary-card" id="summary-card">
+        <div class="summary-header">
+          <span id="summary-icon"></span>
+          <span id="summary-label"></span>
+        </div>
+        <p id="summary-text"></p>
+        <div id="truncation-warning" class="warning hidden">
+          ⚠️ This document was too long to fully analyze. The analysis covers the first ~12,000 characters only. Results may be incomplete — review the full document yourself for anything beyond the analyzed portion.
+        </div>
+      </section>
+
+      <!-- Stats Row -->
+      <div class="stats-row">
+        <div class="stat" id="stat-red">
+          <span class="stat-num" id="count-red">0</span>
+          <span class="stat-label">🔴 Alarming</span>
+        </div>
+        <div class="stat" id="stat-yellow">
+          <span class="stat-num" id="count-yellow">0</span>
+          <span class="stat-label">🟡 Caution</span>
+        </div>
+        <div class="stat" id="stat-green">
+          <span class="stat-num" id="count-green">0</span>
+          <span class="stat-label">🟢 Standard</span>
+        </div>
+      </div>
+
+      <!-- Filter Bar -->
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="red">🔴 Alarming</button>
+        <button class="filter-btn" data-filter="yellow">🟡 Caution</button>
+        <button class="filter-btn" data-filter="green">🟢 Standard</button>
+      </div>
+
+      <!-- Clause List -->
+      <div id="clause-list"></div>
+
+      <!-- Footer -->
+      <footer>
+        <p>Analyzed <span id="analyzed-time"></span> · <span id="extraction-source"></span></p>
+        <p class="disclaimer">This is an AI-assisted summary, not legal advice. Always review the full document for important decisions.</p>
+      </footer>
+
+    </div>
+  </div>
+
+  <script src="results.js"></script>
+</body>
+</html>

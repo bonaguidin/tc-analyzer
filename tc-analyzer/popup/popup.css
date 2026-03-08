@@ -1,0 +1,257 @@
+/* popup.css */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0f1117;
+  --surface: #1a1d27;
+  --surface-2: #21253a;
+  --border: #2a2d3a;
+  --text: #e8eaf0;
+  --text-muted: #7b7f96;
+  --red: #ef4444;
+  --red-bg: #2d1414;
+  --red-border: #5a1e1e;
+  --yellow: #f59e0b;
+  --yellow-bg: #2d2014;
+  --yellow-border: #5a3d0e;
+  --green: #22c55e;
+  --green-bg: #142d1a;
+  --green-border: #1e5a2d;
+  --blue: #60a5fa;
+  --radius: 12px;
+  --font-sans: 'IBM Plex Sans', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+
+  /* Dynamic — set by JS based on result severity */
+  --action-color: #f59e0b;
+  --action-color-hover: #fbbf24;
+  --action-text: #0f1117;
+}
+
+/* Rounded popup — Chrome clips to rectangle so we round the inner wrapper */
+html {
+  background: transparent;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+body {
+  width: 320px;
+  min-height: 160px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 1.5;
+  border-radius: var(--radius);
+  overflow: hidden;
+  animation: popIn 0.18s cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.96) translateY(-4px); }
+  to   { opacity: 1; transform: scale(1)    translateY(0); }
+}
+
+/* ── Header ── */
+header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 16px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.logo { font-size: 16px; }
+.title { font-weight: 600; font-size: 14px; letter-spacing: 0.01em; }
+
+/* ── States ── */
+.state {
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.hidden { display: none !important; }
+.state-icon { font-size: 28px; }
+.state-msg { color: var(--text-muted); line-height: 1.6; }
+.state-msg .sub { font-size: 11px; opacity: 0.7; }
+
+/* ── Pills ── */
+.pill {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.pill-amber { background: var(--yellow-bg); color: var(--yellow); border: 1px solid var(--yellow); }
+
+/* ── Severity Banner ── */
+.severity-banner {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+}
+.severity-banner.red    { background: var(--red-bg);    color: var(--red);    border: 1px solid var(--red-border); }
+.severity-banner.yellow { background: var(--yellow-bg); color: var(--yellow); border: 1px solid var(--yellow-border); }
+.severity-banner.green  { background: var(--green-bg);  color: var(--green);  border: 1px solid var(--green-border); }
+
+/* ── Summary Text ── */
+.done-summary {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  line-height: 1.65;
+  text-align: left;
+  width: 100%;
+}
+
+/* ── Clause Count Chips ── */
+.clause-chips {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  width: 100%;
+}
+
+.chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 8px 6px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.chip-red    { border-color: var(--red-border);    background: var(--red-bg); }
+.chip-yellow { border-color: var(--yellow-border); background: var(--yellow-bg); }
+.chip-green  { border-color: var(--green-border);  background: var(--green-bg); }
+
+
+.chip-red    .chip-count,
+.chip-red    [id^="chip-count"] { color: var(--red); }
+.chip-yellow .chip-count,
+.chip-yellow [id^="chip-count"] { color: var(--yellow); }
+.chip-green  .chip-count,
+.chip-green  [id^="chip-count"] { color: var(--green); }
+
+.chip span[id] {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.chip-red    span[id] { color: var(--red); }
+.chip-yellow span[id] { color: var(--yellow); }
+.chip-green  span[id] { color: var(--green); }
+
+.chip-label {
+  font-size: 9.5px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 500;
+}
+
+/* ── Warning ── */
+.warning {
+  width: 100%;
+  padding: 8px 10px;
+  background: var(--yellow-bg);
+  border: 1px solid var(--yellow-border);
+  border-radius: 6px;
+  color: var(--yellow);
+  font-size: 11px;
+  text-align: left;
+}
+
+/* ── Action Row ── */
+.action-row {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 4px;
+  border-top: 1px solid var(--border);
+}
+
+/* ── Buttons ── */
+.btn-primary {
+  width: 100%;
+  padding: 10px;
+  background: var(--blue);
+  color: #0f1117;
+  border: none;
+  border-radius: 8px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.1s;
+}
+.btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+.btn-primary:active { transform: translateY(0); }
+
+/* View Full Analysis — color driven by --action-color set by JS */
+.btn-secondary {
+  width: 100%;
+  padding: 10px;
+  background: var(--action-color);
+  color: var(--action-text);
+  border: none;
+  border-radius: 8px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+  letter-spacing: 0.01em;
+}
+.btn-secondary:hover {
+  background: var(--action-color-hover);
+  transform: translateY(-1px);
+}
+.btn-secondary:active { transform: translateY(0); }
+
+.btn-ghost {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-align: center;
+}
+.btn-ghost:hover { color: var(--text); }
+
+.error-text { color: var(--red); }
+
+/* ── Spinner ── */
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--border);
+  border-top-color: var(--blue);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
