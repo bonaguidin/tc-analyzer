@@ -124,10 +124,9 @@ const CONFIG = {
 **Tips:**
 - Pin the extension to your toolbar for quick access (puzzle piece icon → pin T&C Analyzer)
 - The badge on the icon updates: amber `!` = detected, colored `!` or `✓` = analysis complete
-- If a T&C is very long, a truncation warning will appear — the analysis covers the first ~40,000 characters. Character limit can be adjusted in config.js
+- If a T&C is very long, a truncation warning will appear — the analysis covers the first ~40,000 characters. Character limit can be adjusted in `config.js`
   ```
   MAX_INPUT_CHARS: 40000, //Adjust as needed based on typical T&C lengths you encounter.
-
   ```
 - The extension will not fire on Google, Bing, or other search engine results pages
 
