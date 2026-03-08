@@ -186,18 +186,6 @@ The analysis prompt uses an explicit severity taxonomy with numbered rules to pr
 
 ---
 
-## Publishing to the Chrome Web Store
-
-This extension is not currently listed on the Chrome Web Store. To publish it publicly:
-
-1. Move the API key to a user-facing options page (hardcoded keys violate Web Store policy)
-2. Pay the one-time $5 Google developer registration fee
-3. Package the extension via `chrome://extensions` → Pack Extension
-4. Submit via the [Chrome Developer Dashboard](https://chrome.google.com/webstore/devconsole) with screenshots and a privacy policy
-5. Wait 1–3 days for Google's review
-
----
-
 ## Disclaimer
 
 T&C Analyzer is an informational tool built to help everyday users understand what they're agreeing to. It does not provide legal advice. Always review important agreements in full before accepting them. Analysis accuracy depends on the quality of text extraction and the LLM's output — treat results as a starting point, not a definitive ruling.
