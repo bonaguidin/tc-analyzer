@@ -114,7 +114,7 @@ const CONFIG = {
 ## How to Use
 
 1. Navigate to any page with Terms & Conditions
-2. A small toast notification appears near the top-right of the page pointing to the extension icon
+2. A small toast notification appears near the top-right of the page pointing to the extension icon if T&Cs are detected
 3. Click the **T&C Analyzer icon** in your toolbar
 4. The popup opens — click **Analyze Now**
 5. Wait 5–15 seconds for the analysis to complete
@@ -124,7 +124,11 @@ const CONFIG = {
 **Tips:**
 - Pin the extension to your toolbar for quick access (puzzle piece icon → pin T&C Analyzer)
 - The badge on the icon updates: amber `!` = detected, colored `!` or `✓` = analysis complete
-- If a T&C is very long, a truncation warning will appear — the analysis covers the first ~40,000 characters
+- If a T&C is very long, a truncation warning will appear — the analysis covers the first ~40,000 characters. Character limit can be adjusted in config.js
+  ```
+  MAX_INPUT_CHARS: 40000, //Adjust as needed based on typical T&C lengths you encounter.
+
+  ```
 - The extension will not fire on Google, Bing, or other search engine results pages
 
 ---
